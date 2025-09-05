@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/history">History</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Prediction History</h1>
+        {% if records %}
+            <table>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Features</th>
+                    <th>Result</th>
+                </tr>
+                {% for rec in records %}
+                <tr>
+                    <td>{{ rec.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>{{ rec.features }}</td>
+                    <td>{{ rec.result }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No prediction records found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
